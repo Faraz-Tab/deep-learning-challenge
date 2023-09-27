@@ -1,44 +1,35 @@
-# Module 21 Report Template
-
-## Overview of the Analysis
+# Module 21 Report Template on the labled data set to compile and optimize a model in predicting weather or not an organization is successful after recieving funds from the charity.
 
 
 
-* Explain the purpose of the analysis.
+Overview:
+Weather or not an organization is successful depends on many factors but given our data set of the assignment, Firstly I prepared the data of the as instructed in our assignment and then split the data with a 3:1 ratio for the testing and training data sets. The purpose of the analysis is the get an accuracy score of at least 75% on the our testing predictions. I have used many mathods including PCA to find our what percentage of the data available can be eliminated without the risk of losing data.   
 
 
-* Explain what financial information the data was on, and what you needed to predict.
+Results:
 
+* What variable(s) are the target(s) for your model? 
+  Our target is the binary data recorded in the "IS_SUCCESSFUL" column of the data set. 
 
-* Provide basic information about the variables you were trying to predict (e.g., `value_counts`).
+* What variable(s) are the features for your model?
+  On our normal model. I have selected every column except "Name" and "EIN" numbers as my features. But in my optimized model, I have further reduced "Status" and "Special_considerations" as they were not contributing value to our learning algorithms.
 
-
-* Describe the stages of the machine learning process you went through as part of this analysis.
-
-
-* Briefly touch on any methods you used (e.g., `LogisticRegression`, or any resampling method).
-
-
-## Results
-
-Using bulleted lists, describe the balanced accuracy scores and the precision and recall scores of all machine learning models.
+* What variable(s) should be removed from the input data because they are neither targets nor features?
+  "Name" and "EIN" are columns that are neither targets nor Feature as they are unique data for each individual data point and do not contribute to our predictions.
 
 
 
-* Machine Learning Model 2:
-  * Description of Model 2 Accuracy, Precision, and Recall scores.
-  After oversampling the training data, Our second model still performs the same with the only difference being the recall score for our unhealthy data which goes up to 99%. This is though to the fact that our negative leans data points have been increased drastically which affects this number. how ever, the precision score is even lower and we can see that the number of our False negatives has even increased. This is though to the data points being copied and is not only overfitting the model, but resulting in a false 4$ increase inour accuracy. 
-
-## Summary
-
-Summarize the results of the machine learning models, and include a recommendation on the model to use, if any. For example:
-* Which one seems to perform best? How do you know it performs best?
-Between the two models, I still think our first model is more accurate in being generalized and our second model is overfitted. even though it has a high accuracy.
 
 
-* Does performance depend on the problem we are trying to solve? (For example, is it more important to predict the `1`'s, or predict the `0`'s? )
-In this case, it is important to predint both of these loans, as our precision to correctly guress the  healthy loans, results in better predicrion of creditworthyness of future borrowers. And the precision in identifying unhealthy loans results in less loss and they both have a direct role to play in minimzing the default loss of the company. So in conclusion, our it is important to look at our f-1score score. 
+* How many neurons, layers, and activation functions did you select for your neural network model?
+  For our first model, I chose to go with two hidden layers, each containing 15 neurons. For our feature layer, I had 43 input dimentions and a single neuron with a "Sigmoid" activatio function as the target neuron since our target prediction id a binoary problem to solve.
 
-If you do not recommend any of the models, please justify your reasoning.
-In this report I can conclude that our models are not satisfactory in meeting with the correct requirments. both our mdoels do well with predicting healthy loans. But when it comes to accurately predicting our unhealthy data, their procision falls to an average of 85%. which then affects our f1-score. My recommendations for further investing into these machin learning models is to try using a differnet approach like using random forest or if possible, add extra columns(features) to our data set which might help to imporve our models accuracy in deperating these unhealthy data points and increast our precision for unhealthy loans. And lastly, the most reliable solution to increase our models accurace is to add more unhealhty samples to our data sets to further increase the precision and there for the overall accuracy of our model.
+  * Were you able to achieve the target model performance?
+    I was not able to acheive the target accuracy performance even after optimization methods I used.
 
+  * What steps did you take in your attempts to increase model performance?
+  I tried PCA to reduce the dimentions, Decision forest to check for feature importance, I used tuning codes in a seperate colab jupyter notebook and even reduced "STATUS" and "SPECIAL_CONSIDERATION" columns. I used different test and training ratio splits and even tried to add duplicated data to our data set to further help the models accuracy. but none were helpful as the maximus accuracy I received was 74 percente on my training data and 72.3% on my testing data. I have even changed the activation functions between "Relu", "tanh" and even "Sigmoid". I added up to 5 hidden layer and a maximum of  2500 neurons spread in between the hidden layers but only further confused the accuracy. On my best performance, I got 74.3 % accuracy on my training data and a 73.8 % on my testing data. I could not achieve the target of 75%.
+
+
+  summary:
+  We could try to gather more columns and features to further help our model as the data itself is the most important part and what the machine recieves as input is the most important feature. I would recommend to further collect more imformation if available, or if not, trying other algorythms such as SVM or random forst might be better options to try. 
